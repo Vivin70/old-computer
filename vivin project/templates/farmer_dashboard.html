@@ -1,0 +1,67 @@
+<!-- <select onchange="changeLang(this.value)">
+<option>English</option>
+<option>Tamil</option>
+</select>
+
+<div class="sidebar">
+<a target="frame" href="/weather">Weather</a>
+<a target="frame" href="/disease">Disease</a>
+<a target="frame" href="/contract">Contract</a>
+<a target="frame" href="/profile">Profile</a>
+</div>
+
+<iframe name="frame"></iframe>
+<script src="/static/js/lang.js"></script> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<div id="google_translate_element" style="display:none;"></div>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        {
+            pageLanguage: 'en',
+            includedLanguages: 'en,ta',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        },
+        'google_translate_element'
+    );
+}
+</script>
+
+<script type="text/javascript"
+src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+</script>
+
+<body>
+<div class="language-switch">
+    <button onclick="changeLanguage('en')">English</button>
+    <button onclick="changeLanguage('ta')">தமிழ்</button>
+</div>
+
+<h2>Welcome Farmer</h2>
+
+<div class="nav">
+    <a href="/weather">Weather</a>
+    <a href="/disease">Disease Prediction</a>
+    <a href="/contract">Contract Match</a>
+    <a href="/chatbot">Chatbot</a>
+    <a href="/profile">Profile</a>
+    <a href="/">Logout</a>
+</div>
+<script>
+function changeLanguage(lang) {
+    const select = document.querySelector("select.goog-te-combo");
+    if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+    }
+}
+</script>
+
+</body>
+</html>

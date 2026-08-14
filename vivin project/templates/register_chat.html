@@ -1,0 +1,80 @@
+<!-- <script src="/static/js/chat_register.js"></script>
+<div id="chatbox"></div>
+<input id="answer">
+<button onclick="next()">Send</button> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | Smart Farmers</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+<div class="chat-container">
+    <h2>Farmer Registration Chat</h2>
+
+    <div id="chat-box" class="chat-box"></div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your answer...">
+        <button onclick="nextStep()">Send</button>
+    </div>
+</div>
+
+<script>
+let step = 0;
+let farmer = {};
+
+const questions = [
+    "👋 Hello! What is your full name?",
+    "📅 Enter your Date of Birth (YYYY-MM-DD)",
+    "📧 Enter your Email ID",
+    "🔐 Create a Password (1 capital, numbers, symbols)"
+];
+
+function addMessage(text, sender) {
+    let box = document.getElementById("chat-box");
+    let msg = document.createElement("div");
+    msg.className = sender;
+    msg.innerText = text;
+    box.appendChild(msg);
+    box.scrollTop = box.scrollHeight;
+}
+
+addMessage(questions[0], "bot");
+
+function nextStep() {
+    let input = document.getElementById("userInput");
+    let value = input.value.trim();
+    if (value === "") return;
+
+    addMessage(value, "user");
+
+    if (step === 0) farmer.name = value;
+    if (step === 1) farmer.dob = value;
+    if (step === 2) farmer.email = value;
+    if (step === 3) farmer.password = value;
+
+    step++;
+    input.value = "";
+
+    if (step < questions.length) {
+        setTimeout(() => addMessage(questions[step], "bot"), 500);
+    } else {
+        fetch("/save_user", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(farmer)
+        })
+        .then(res => res.json())
+        .then(data => {
+            addMessage("✅ Registration successful! You can now login.", "bot");
+        });
+    }
+}
+</script>
+
+</body>
+</html>
