@@ -1,0 +1,149 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Ethereum Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="box" style="width:90%">
+    <h2>Ethereum Price Prediction Dashboard</h2>
+
+    <form method="POST">
+        <input type="date" name="date" required>
+        <button>Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Predicted ETH Price: ₹ {{ prediction }}</h3>
+    {% endif %}
+
+    <br>
+
+    <h3>📈 Ethereum Price Trend (INR)</h3>
+    <canvas id="lineChart"></canvas>
+
+    <br><br>
+
+    <h3>📊 Ethereum Price Comparison (INR)</h3>
+    <canvas id="barChart"></canvas>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+
+<script>
+    const dates = {{ dates | safe }};
+    const prices = {{ prices | safe }};
+
+    // Line Graph
+    new Chart(document.getElementById("lineChart"), {
+        type: "line",
+        data: {
+            labels: dates,
+            datasets: [{
+                label: "ETH Price (₹)",
+                data: prices,
+                borderWidth: 3,
+                tension: 0.4,
+                fill: false
+            }]
+        },
+        options: { responsive: true }
+    });
+
+    // Bar Graph
+    new Chart(document.getElementById("barChart"), {
+        type: "bar",
+        data: {
+            labels: dates,
+            datasets: [{
+                label: "ETH Price (₹)",
+                data: prices,
+                borderWidth: 1
+            }]
+        },
+        options: { responsive: true }
+    });
+</script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ethereum Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="box" style="width:90%">
+    <h2>Ethereum Price Prediction Dashboard</h2>
+
+    <form method="POST">
+        <input type="date" name="date" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Predicted ETH Price: ₹ {{ prediction }}</h3>
+    {% endif %}
+
+    <h3>📈 Line Graph (INR)</h3>
+    <canvas id="lineChart" height="120"></canvas>
+
+    <h3>📊 Bar Graph (INR)</h3>
+    <canvas id="barChart" height="120"></canvas>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+
+<script>
+    // Flask → JS conversion (VERY IMPORTANT)
+    const dates = {{ dates | tojson }};
+    const prices = {{ prices | tojson }};
+
+    console.log(dates);
+    console.log(prices);
+
+    // ---------- LINE GRAPH ----------
+    new Chart(document.getElementById("lineChart"), {
+        type: "line",
+        data: {
+            labels: dates,
+            datasets: [{
+                label: "ETH Price (₹)",
+                data: prices,
+                borderWidth: 3,
+                tension: 0.4,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // ---------- BAR GRAPH ----------
+    new Chart(document.getElementById("barChart"), {
+        type: "bar",
+        data: {
+            labels: dates,
+            datasets: [{
+                label: "ETH Price (₹)",
+                data: prices
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+body {
+    font-family: Arial;
+    background: #0f2027;
+    background: linear-gradient(to right,#2c5364,#203a43,#0f2027);
+    color: white;
+}
+
+.box {
+    width: 350px;
+    margin: 100px auto;
+    background: #111;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+input, button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+button {
+    background: #00c6ff;
+    border: none;
+    color: black;
+    font-weight: bold;
+}
+
+a {
+    color: #00c6ff;
+    text-decoration: none;
+}
