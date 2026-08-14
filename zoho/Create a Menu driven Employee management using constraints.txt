@@ -1,0 +1,54 @@
+Create a Menu driven Employee management System,
+Which contains 
+*Employee Name
+*Employee age
+*Employee Salary
+*Employee Role
+
+
+
+🧩 Constraints (Must Follow ALL):
+Use only Object type for storing references.
+
+❌ Do not use Employee[], ArrayList<Employee>, or any class type in array declarations.
+
+✅ Use Object[] arr = new Object[10];
+
+Do not use for-each loops.
+
+✅ Only use basic for, while, or do-while loops.
+
+Program must run in an infinite loop until the user selects the exit option.
+
+❌ Do not use break, return, or System.exit(0) inside switch-case or anywhere.
+
+✅ Use a looping condition that checks for an "exit flag".
+
+Must use typecasting when retrieving objects from storage.
+
+Store objects as Object and cast them to Employee before using.
+
+Must use equalsIgnoreCase() for comparing any String values (like role).
+
+No use of collections (ArrayList, HashMap, etc.)
+
+Implement Composition in Employee
+
+Add a new class COMPANY with fields: String name, String location
+Add a new class Address with fields: String StreetName, String city,String State,long pincode.
+
+
+
+
+Only allow up to 5 employees (fixed size).
+
+Store them in Object[] employeeData = new Object[5];
+
+Use only Scanner for input.
+
+Use only one class for menu operations.
+
+All logic should be in main() or helper methods in the same class.
+
+
+  
