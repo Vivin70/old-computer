@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Contract Match Predictor 📈</h2>
+
+    <form method="post">
+        <label>Crop Type</label>
+        <select name="crop">
+            <option value="0">Rice</option>
+            <option value="1">Wheat</option>
+            <option value="2">Maize</option>
+        </select>
+
+        <input type="number" name="quantity" placeholder="Quantity (kg)" required>
+        <input type="number" name="market_price" placeholder="Market Price per kg" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Predicted Contract Price: ₹{{ prediction }}</h3>
+        <h3>{{ decision }}</h3>
+    {% endif %}
+
+    <a href="/index">Back to Dashboard</a>
+</div>
+</body>
+</html>

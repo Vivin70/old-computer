@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Weather Prediction 🌦</h2>
+
+    <form method="post">
+        <input type="number" name="temperature" placeholder="Temperature (°C)" required>
+        <input type="number" name="humidity" placeholder="Humidity (%)" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction %}
+        <h3>{{ prediction }}</h3>
+    {% endif %}
+
+    <a href="/index">Back to Dashboard</a>
+</div>
+</body>
+</html>

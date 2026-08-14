@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crop Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Crop Disease Prediction 🌱</h2>
+
+    <form method="post">
+        <label>Yellow Leaves?</label>
+        <select name="yellow">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Brown Spots?</label>
+        <select name="brown">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <label>Wilting?</label>
+        <select name="wilt">
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+        </select>
+
+        <button type="submit">Predict Disease</button>
+    </form>
+
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+
+    <a href="/index">Back to Dashboard</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="dashboard">
+    <h1>Admin Dashboard 👨‍💼</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Update Role</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for u in users %}
+        <tr>
+            <td>{{ u.id }}</td>
+            <td>{{ u.name }}</td>
+            <td>{{ u.email }}</td>
+            <td>{{ u.role }}</td>
+
+            <td>
+                {% if u.role != 'admin' %}
+                <form method="post" action="/admin/update">
+                    <input type="hidden" name="id" value="{{ u.id }}">
+                    <select name="role">
+                        <option value="farmer">Farmer</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                    <button type="submit">Update</button>
+                </form>
+                {% else %}
+                    Admin
+                {% endif %}
+            </td>
+
+            <td>
+                {% if u.role != 'admin' %}
+                <a href="/admin/delete/{{ u.id }}" onclick="return confirm('Are you sure?')">
+                    ❌ Delete
+                </a>
+                {% else %}
+                    -
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+</body>
+</html>

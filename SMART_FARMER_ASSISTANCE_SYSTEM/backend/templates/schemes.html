@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Government Schemes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="dashboard">
+    <h1>Government Schemes for Farmers 🏛</h1>
+
+    {% for scheme in schemes %}
+        <div class="card">
+            <h3>{{ scheme.name }}</h3>
+            <p><strong>Description:</strong> {{ scheme.description }}</p>
+            <p><strong>Eligibility:</strong> {{ scheme.eligibility }}</p>
+        </div>
+    {% endfor %}
+
+    <br>
+    <a href="/index">Back to Dashboard</a>
+</div>
+</body>
+</html>

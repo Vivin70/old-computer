@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='static/css/style.css') }}"> -->
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<div class="dashboard">
+    <h1>Farmer Dashboard 🌾</h1>
+    <div class="cards">
+        <div class="card">
+    <a href="/weather">🌦 Weather Prediction</a>
+</div>
+        <div class="card">📈 Contract Predictor</div>
+       <div class="card">
+    <a href="/crop_disease">🌱 Crop Disease Prediction</a>
+</div>
+
+<div class="card">
+    <a href="/contract">📈 Contract Predictor</a>
+</div>
+
+
+        <!-- <div class="card">
+    <a href="/chatbot">🤖 Farmer Chatbot</a>
+</div> -->
+<h2>Farmer Chatbot</h2>
+
+<select id="language">
+  <option value="en">English</option>
+  <option value="ta">தமிழ்</option>
+  <option value="hi">हिंदी</option>
+</select>
+
+<div id="chat-box"></div>
+
+<input type="text" id="user-input" placeholder="Ask something..." />
+<button onclick="sendMessage()">Send</button>
+
+<script src="/static/js/chatbot.js"></script>
+
+
+        <div class="card">
+    <a href="/schemes">🏛 Govt Schemes</a>
+</div>
+
+    <br>
+    <a href="/logout">Logout</a>
+</div>
+</body>
+</html>

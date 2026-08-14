@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Farmer Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="container">
+    <h2>Farmer Chatbot 🤖</h2>
+
+    <form method="post">
+        <input type="text" name="message" placeholder="Ask your question..." required>
+        <button type="submit">Send</button>
+    </form>
+
+    {% if response %}
+        <h3>Bot: {{ response }}</h3>
+    {% endif %}
+
+    <a href="/index">Back to Dashboard</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+flask
+flask-mysql
+mysql-connector-python
+werkzeug
+scikit-learn
